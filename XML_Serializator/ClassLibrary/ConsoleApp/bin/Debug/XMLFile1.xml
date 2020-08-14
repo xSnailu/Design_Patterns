@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pastures xmlns="http://example.org/jk/pastures">
+  <!--  Potwierdzam samodzielność powyższej pracy oraz niekorzystanie przeze mnie z niedozwolonych źródeł -->
+  <!--  Marcel Ślimak -->
+  <meetings>
+    <meeting location="AA">
+      <participants>
+        <participant>1</participant>
+        <participant>2</participant>
+      </participants>
+    </meeting>
+    <meeting location="XX-YX-ZA">
+      <participants>
+        <participant>4</participant>
+        <participant>2</participant>
+      </participants>
+    </meeting>
+  </meetings>
+  <pasture area="20.00">
+    <name>XX-YX-ZA</name>
+    <name>AA</name>
+  </pasture>
+  <pasture area="31.03">
+    <name>AA-BB-CC-DD</name>
+  </pasture>
+  <pasture area="31.12">
+    <name>SS</name>
+    <name>AB-CD-FG-AN-PQ</name>
+  </pasture>
+  <centaur name="Guybrush" age="23" id="1">
+    <beard/>
+    <mustache/>
+  </centaur>
+  <centaur name="Manny" age="77" id="2">
+    <beard/>
+    <whiskers/>
+  </centaur>
+  <minotaur name="Sam" age="21" id="4" mass="785"/>
+</pastures>
+

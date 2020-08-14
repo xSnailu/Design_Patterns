@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--  Potwierdzam samodzielność powyższej pracy oraz niekorzystanie przeze mnie z niedozwolonych źródeł -->
+<!--  Marcel Ślimak -->
+<xs:schema id="manufaktura"
+          targetNamespace="http://example.org/jk/pastures"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:man="http://example.org/jk/pastures"
+          attributeFormDefault="unqualified"
+          elementFormDefault="qualified">
+
+  <xs:simpleType name="area">
+    <xs:restriction base="xs:double">
+      <xs:pattern value="[1-9][0-9]*[.].*"/>
+      <xs:minInclusive value="1.0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="name">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][A-Z]+(-[A-Z][A-Z])*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  
+
+  <xs:element name="pastures">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="meetings" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="meeting" maxOccurs="unbounded" minOccurs="2">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="participants" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="participant" type="xs:int" minOccurs="2" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                      </xs:complexType>
+
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="location" type="xs:string" use="required" />
+                </xs:complexType>
+
+                <xs:unique name="uniqueParticipantInOneMeeting">
+                  <xs:selector xpath=".//man:participant" />
+                  <xs:field xpath="." />
+                </xs:unique>
+                
+              </xs:element>
+            </xs:sequence>          
+          </xs:complexType>
+        </xs:element>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="pasture" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="man:name" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="area" type="man:area" use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="centaur" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="beard"  minOccurs="0" maxOccurs="1"/>
+                <xs:element name="mustache"  minOccurs="0" maxOccurs="1"/>
+                <xs:element name="whiskers"  minOccurs="0" maxOccurs="1"/>
+              </xs:sequence>
+              <xs:attribute name="name" type="xs:string" use="required"/>
+              <xs:attribute name="age" type="xs:int" use="optional"/>
+              <xs:attribute name="id" type="xs:int" use="required"/>
+            </xs:complexType>
+          </xs:element>
+        <xs:element name="minotaur" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:attribute name="name" type="xs:string" use="required"/>
+              <xs:attribute name="age" type="xs:int" use="optional"/>
+              <xs:attribute name="id" type="xs:int" use="required"/>
+              <xs:attribute name="mass" type="xs:double" use="optional"/>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+  
+      </xs:sequence>  
+    </xs:complexType>
+
+    <xs:unique name="uniqueNamePasture">
+      <xs:selector xpath=".//man:name" />
+      <xs:field xpath="." />
+    </xs:unique>
+
+    
+    
+    
+    <xs:key name="keysID">
+      <xs:selector xpath="man:centaur|man:minotaur"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <xs:keyref name="NogaRef" refer="man:keysID">
+      <xs:selector xpath="man:meetings/man:meeting/man:participant"/>
+      <xs:field xpath="."/>
+    </xs:keyref>
+    
+    
+  </xs:element>
+  
+</xs:schema>
+
