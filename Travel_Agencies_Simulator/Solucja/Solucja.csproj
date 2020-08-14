@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90198485-F801-4D1F-8B6F-FB0BA00CA159}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Solucja</RootNamespace>
+    <AssemblyName>Solucja</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodecMachine\ICodecMachine.cs" />
+    <Compile Include="CodecMachine\DecodingFabrics.cs" />
+    <Compile Include="Codec\Codec.cs" />
+    <Compile Include="DataAccess\Booking.cs" />
+    <Compile Include="DataAccess\IDatabase.cs" />
+    <Compile Include="DataAccess\Oyster.cs" />
+    <Compile Include="DataAccess\ShutterStock.cs" />
+    <Compile Include="DataAccess\TripAdvisor.cs" />
+    <Compile Include="DatabaseIterator\IDatabaseIterator.cs" />
+    <Compile Include="IAdvertisingAgency.cs" />
+    <Compile Include="Init\BookingGenerator.cs" />
+    <Compile Include="Init\DBGeneratorUtils.cs" />
+    <Compile Include="Init\Init.cs" />
+    <Compile Include="Init\OysterGenerator.cs" />
+    <Compile Include="Init\ShutterStockGenerator.cs" />
+    <Compile Include="Init\TripAdvisorGenerator.cs" />
+    <Compile Include="IOffer.cs" />
+    <Compile Include="IOfferWebsite.cs" />
+    <Compile Include="ITravelAgency.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="TravelAgentsAbstractFactory\Day.cs" />
+    <Compile Include="TravelAgentsAbstractFactory\IPhoto.cs" />
+    <Compile Include="TravelAgentsAbstractFactory\IReview.cs" />
+    <Compile Include="TravelAgentsAbstractFactory\ITrip.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
